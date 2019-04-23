@@ -10,6 +10,9 @@
 		0FA387F1226E3736003B71EC /* AnalogTimePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA387E7226E3736003B71EC /* AnalogTimePicker.framework */; };
 		0FA387F6226E3736003B71EC /* AnalogTimePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA387F5226E3736003B71EC /* AnalogTimePickerTests.swift */; };
 		0FA387F8226E3736003B71EC /* AnalogTimePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FA387EA226E3736003B71EC /* AnalogTimePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0FA38802226E3797003B71EC /* AnalogTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA38801226E3797003B71EC /* AnalogTimePicker.swift */; };
+		0FA38804226E3ADF003B71EC /* AnalogTimePicking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA38803226E3ADF003B71EC /* AnalogTimePicking.swift */; };
+		0FA38806226E4693003B71EC /* HourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA38805226E4693003B71EC /* HourModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +26,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D733F7011E8C1CDE4F426DC /* Pods-AnalogTimePickerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnalogTimePickerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnalogTimePickerTests/Pods-AnalogTimePickerTests.release.xcconfig"; sourceTree = "<group>"; };
 		0FA387E7226E3736003B71EC /* AnalogTimePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnalogTimePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA387EA226E3736003B71EC /* AnalogTimePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnalogTimePicker.h; sourceTree = "<group>"; };
 		0FA387EB226E3736003B71EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FA387F0226E3736003B71EC /* AnalogTimePickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnalogTimePickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA387F5226E3736003B71EC /* AnalogTimePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogTimePickerTests.swift; sourceTree = "<group>"; };
 		0FA387F7226E3736003B71EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FA38801226E3797003B71EC /* AnalogTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogTimePicker.swift; sourceTree = "<group>"; };
+		0FA38803226E3ADF003B71EC /* AnalogTimePicking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogTimePicking.swift; sourceTree = "<group>"; };
+		0FA38805226E4693003B71EC /* HourModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourModel.swift; sourceTree = "<group>"; };
+		5E1921F5A02B7E3C36911723 /* Pods-AnalogTimePickerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnalogTimePickerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnalogTimePickerTests/Pods-AnalogTimePickerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AA77A45B0EF117F39223535A /* Pods-AnalogTimePicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnalogTimePicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnalogTimePicker/Pods-AnalogTimePicker.release.xcconfig"; sourceTree = "<group>"; };
+		D4C26C1147E67F23EF510FD8 /* Pods-AnalogTimePicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnalogTimePicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnalogTimePicker/Pods-AnalogTimePicker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +66,8 @@
 				0FA387E9226E3736003B71EC /* AnalogTimePicker */,
 				0FA387F4226E3736003B71EC /* AnalogTimePickerTests */,
 				0FA387E8226E3736003B71EC /* Products */,
+				2D48E363E8E3F163BC7FF5D8 /* Pods */,
+				15F4053A085C98B9CDCB42AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				0FA387EA226E3736003B71EC /* AnalogTimePicker.h */,
+				0FA38801226E3797003B71EC /* AnalogTimePicker.swift */,
+				0FA38803226E3ADF003B71EC /* AnalogTimePicking.swift */,
+				0FA38805226E4693003B71EC /* HourModel.swift */,
 				0FA387EB226E3736003B71EC /* Info.plist */,
 			);
 			path = AnalogTimePicker;
@@ -84,6 +99,24 @@
 				0FA387F7226E3736003B71EC /* Info.plist */,
 			);
 			path = AnalogTimePickerTests;
+			sourceTree = "<group>";
+		};
+		15F4053A085C98B9CDCB42AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2D48E363E8E3F163BC7FF5D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4C26C1147E67F23EF510FD8 /* Pods-AnalogTimePicker.debug.xcconfig */,
+				AA77A45B0EF117F39223535A /* Pods-AnalogTimePicker.release.xcconfig */,
+				5E1921F5A02B7E3C36911723 /* Pods-AnalogTimePickerTests.debug.xcconfig */,
+				0D733F7011E8C1CDE4F426DC /* Pods-AnalogTimePickerTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,6 +137,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FA387FB226E3736003B71EC /* Build configuration list for PBXNativeTarget "AnalogTimePicker" */;
 			buildPhases = (
+				3E11D09289A3D18183700F74 /* [CP] Check Pods Manifest.lock */,
 				0FA387E2226E3736003B71EC /* Headers */,
 				0FA387E3226E3736003B71EC /* Sources */,
 				0FA387E4226E3736003B71EC /* Frameworks */,
@@ -122,6 +156,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FA387FE226E3736003B71EC /* Build configuration list for PBXNativeTarget "AnalogTimePickerTests" */;
 			buildPhases = (
+				DB26A2B3B60B6088E26A6292 /* [CP] Check Pods Manifest.lock */,
 				0FA387EC226E3736003B71EC /* Sources */,
 				0FA387ED226E3736003B71EC /* Frameworks */,
 				0FA387EE226E3736003B71EC /* Resources */,
@@ -148,6 +183,7 @@
 				TargetAttributes = {
 					0FA387E6226E3736003B71EC = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 					0FA387EF226E3736003B71EC = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -189,11 +225,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3E11D09289A3D18183700F74 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnalogTimePicker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB26A2B3B60B6088E26A6292 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnalogTimePickerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0FA387E3226E3736003B71EC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA38806226E4693003B71EC /* HourModel.swift in Sources */,
+				0FA38804226E3ADF003B71EC /* AnalogTimePicking.swift in Sources */,
+				0FA38802226E3797003B71EC /* AnalogTimePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +426,9 @@
 		};
 		0FA387FC226E3736003B71EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4C26C1147E67F23EF510FD8 /* Pods-AnalogTimePicker.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +446,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.YasMarcu.AnalogTimePicker;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,7 +454,9 @@
 		};
 		0FA387FD226E3736003B71EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA77A45B0EF117F39223535A /* Pods-AnalogTimePicker.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -390,7 +481,9 @@
 		};
 		0FA387FF226E3736003B71EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E1921F5A02B7E3C36911723 /* Pods-AnalogTimePickerTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K87C2842H7;
 				INFOPLIST_FILE = AnalogTimePickerTests/Info.plist;
@@ -408,7 +501,9 @@
 		};
 		0FA38800226E3736003B71EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D733F7011E8C1CDE4F426DC /* Pods-AnalogTimePickerTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K87C2842H7;
 				INFOPLIST_FILE = AnalogTimePickerTests/Info.plist;
