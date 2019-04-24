@@ -1,155 +1,153 @@
 import UIKit
 
-public class AnalogTimePicker: AnalogTimePicking {
+public class AnalogTimePicker {
   
-  // MARK: Radius
+  private var clockDialLayer: CAShapeLayer = CAShapeLayer()
   
-  private let clockRadius: CGFloat
-  private let hourRadius: CGFloat
-  
-  // MARK: Colors
-  
-  private let clockColor: CGColor
-  private let hourCircleColor: CGColor
-  private let selectedHourCircleColor: CGColor
-  private let timeTextColor: CGColor
+  // MARK: - Dependencies
   
   private let viewContainer: UIView
   
-  private var handleLayer: CAShapeLayer = CAShapeLayer()
+  private let clockFaceRadius: CGFloat
+  private let clockDialRadius: CGFloat
   
+  private let clockFaceColor: CGColor
+  private let clockDialColor: CGColor
+  private let clockDialTextColor: CGColor
+  private let selectedClockDialColor: CGColor
+  
+  private let clockDialTextFont: UIFont?
+ 
   public init(
-    hourSizeRatio: CGFloat,
-    hourColor: UIColor = UIColor(red:0.45, green:0.01, blue:0.01, alpha:1.0),
-    selectedHourColor: UIColor = UIColor(red:0.10, green:0.60, blue:0.42, alpha:1.0),
-    clockColor: UIColor = UIColor(red:0.45, green:0.01, blue:0.01, alpha:1.0),
-    timeTextColor: UIColor = UIColor.white,
-    viewContainer: UIView
+    viewContainer: UIView,
+    clockDialSizeRatioToClockFace: CGFloat = 0.08,
+    clockDialColor: UIColor = UIColor.maroon,
+    selectedClockDialColor: UIColor = UIColor.forestGreen,
+    clockFaceColor: UIColor = UIColor.salmon,
+    clockDialTextColor: UIColor = UIColor.white,
+    clockDialTextFont: UIFont? = UIFont(name: "Arial-BoldMT", size: 17.0)
   ) {
-    self.clockRadius = viewContainer.frame.width/2
-    self.hourRadius = (clockRadius*2)*hourSizeRatio
-    self.hourCircleColor = hourColor.cgColor
-    self.clockColor = clockColor.cgColor
-    self.selectedHourCircleColor = selectedHourColor.cgColor
-    self.timeTextColor = timeTextColor.cgColor
     self.viewContainer = viewContainer
+    self.clockFaceRadius = viewContainer.frame.width/2
+    self.clockDialRadius = (clockFaceRadius*2)*clockDialSizeRatioToClockFace
+    self.clockDialColor = clockDialColor.cgColor
+    self.clockFaceColor = clockFaceColor.cgColor
+    self.selectedClockDialColor = selectedClockDialColor.cgColor
+    self.clockDialTextColor = clockDialTextColor.cgColor
+    self.clockDialTextFont = clockDialTextFont
   }
   
-  // MARK: - Public Functions
+  // MARK: - Draw Clock
   
-  public func drawTimePicker() {
-    drawClock()
-    drawEachTime()
+  private func drawClockFace() {
+    let layer = circleShapeLayer(radius: clockFaceRadius, fillColor: clockFaceColor)
+    viewContainer.layer.addSublayer(layer)
+  }
+  
+  private func drawClockPivot() {
+    let layer = circleShapeLayer(radius: clockFaceRadius*0.03, fillColor: selectedClockDialColor)
+    viewContainer.layer.addSublayer(layer)
+  }
+  
+  private func drawClockDial() {
+    Hour.allCases.forEach { time in
+      drawTimeCircleWithText(for: time)
+    }
+  }
+  
+  private func drawTimeCircleWithText(for time: Hour) {
+    let coordinate = calculateCoordinate(at: time.angle, minus: clockDialRadius)
+    let layer = circleShapeLayer(radius: clockDialRadius, fillColor: clockDialColor, name: time.rawValue, arcCenter: coordinate)
+    
+    let textLayer = CATextLayer()
+    textLayer.string = time.rawValue
+    textLayer.font = clockDialTextFont
+    textLayer.fontSize = clockDialRadius*0.8
+    textLayer.foregroundColor = clockDialTextColor
+    textLayer.alignmentMode = .center
+    
+    let midRadius = clockDialRadius/2
+    let origin = CGPoint(x: coordinate.x-midRadius, y: coordinate.y-midRadius)
+    let size = CGSize(width: clockDialRadius, height: clockDialRadius)
+    textLayer.frame = CGRect(origin: origin, size: size)
+    
+    layer.addSublayer(textLayer)
+    viewContainer.layer.addSublayer(layer)
+  }
+  
+  // MARK: - Handle Selected Time
+  
+  private func drawClockHand(at angle: Double) {
+    let point = calculateCoordinate(at: angle, minus: 2*clockDialRadius)
+    
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: clockFaceRadius, y: clockFaceRadius))
+    path.addLine(to: point)
+    
+    clockDialLayer.path = path.cgPath
+    clockDialLayer.strokeColor = selectedClockDialColor
+    clockDialLayer.lineWidth = 3.0
+    
+    viewContainer.layer.addSublayer(clockDialLayer)
+  }
+  
+  // MARK: - Helper
+  
+  private func calculateCoordinate(at angle: Double, minus axis: CGFloat) -> CGPoint {
+    return CGPoint(
+      x: (clockFaceRadius-axis) * CGFloat(sin(angle)) + clockFaceRadius,
+      y: (clockFaceRadius-axis) * CGFloat(cos(angle)) + clockFaceRadius
+    )
+  }
+  
+  private func circleShapeLayer(radius: CGFloat, fillColor: CGColor, name: String? = nil, arcCenter: CGPoint? = nil) -> CAShapeLayer {
+    let circlePath = UIBezierPath(
+      arcCenter: arcCenter ?? CGPoint(x: clockFaceRadius,y: clockFaceRadius),
+      radius: radius,
+      startAngle: CGFloat(0),
+      endAngle:CGFloat(Double.pi * 2),
+      clockwise: true
+    )
+    
+    let shapeLayer = CAShapeLayer()
+    shapeLayer.path = circlePath.cgPath
+    shapeLayer.fillColor = fillColor
+    shapeLayer.name = name
+    
+    return shapeLayer
+  }
+}
+
+
+extension AnalogTimePicker: AnalogTimePicking {
+  public func draw() {
+    drawClockFace()
+    drawClockPivot()
+    drawClockDial()
   }
   
   public func selectedTime(_ touches: Set<UITouch>) -> Int {
-    guard let point = touches.first?.location(in: viewContainer) else { return 0 }
-    guard let sublayers = viewContainer.layer.sublayers as? [CAShapeLayer] else { return 0 }
+    guard
+      let point = touches.first?.location(in: viewContainer),
+      let sublayers = viewContainer.layer.sublayers as? [CAShapeLayer] else { return 0 }
     
     var selectedHour: Int?
-    for layer in sublayers {
-      guard let name = layer.name, let angle = Hour(rawValue: name)?.angle else { continue }
+    sublayers.forEach { layer in
+      guard let name = layer.name, let angle = Hour(rawValue: name)?.angle else { return }
       
-      if layer.fillColor == selectedHourCircleColor {
-        layer.fillColor = hourCircleColor
+      if layer.fillColor == selectedClockDialColor {
+        layer.fillColor = clockDialColor
       }
       
-      if let path = layer.path, path.contains(point) {
-        layer.fillColor = selectedHourCircleColor
-        handleLayer.removeFromSuperlayer()
-        drawHandle(at: pointToCircle(at: angle))
-        selectedHour = Int(name)
-      }
+      guard let path = layer.path, path.contains(point) else { return }
+      
+      layer.fillColor = selectedClockDialColor
+      clockDialLayer.removeFromSuperlayer()
+      drawClockHand(at: angle)
+      selectedHour = Int(name)
     }
     
     guard let hour = selectedHour else { return 0 }
     return hour
-  }
-  
-  // MARK: - Draw Inital Clock
-  
-  private func drawClock() {
-    let circlePath = UIBezierPath(
-      arcCenter: CGPoint(x: clockRadius,y: clockRadius),
-      radius: CGFloat(clockRadius),
-      startAngle: CGFloat(0),
-      endAngle:CGFloat(Double.pi * 2),
-      clockwise: true
-    )
-    
-    let shapeLayer = CAShapeLayer()
-    shapeLayer.path = circlePath.cgPath
-    shapeLayer.fillColor = clockColor
-    
-    viewContainer.layer.addSublayer(shapeLayer)
-  }
-  
-  private func drawEachTime() {
-    let hours: [Hour] = Hour.allCases
-    
-    hours.forEach { hour in
-      viewContainer.layer.addSublayer(drawCircle(at: hour))
-    }
-  }
-  
-  private func drawCircle(at hour: Hour) -> CAShapeLayer {
-    let circlePoint = positionCircle(at: hour.angle)
-    
-    let circlePath = UIBezierPath(
-      arcCenter: circlePoint,
-      radius: hourRadius,
-      startAngle: CGFloat(0),
-      endAngle:CGFloat(Double.pi * 2),
-      clockwise: true
-    )
-    
-    let shapeLayer = CAShapeLayer()
-    shapeLayer.name = hour.rawValue
-    shapeLayer.path = circlePath.cgPath
-    shapeLayer.fillColor = hourCircleColor
-    
-    let textLayer = CATextLayer()
-    textLayer.string = hour.rawValue
-    textLayer.fontSize = hourRadius*0.8
-    textLayer.foregroundColor = timeTextColor
-    textLayer.alignmentMode = .center
-    
-    let midRadius = hourRadius/2
-    let origin = CGPoint(x: circlePoint.x-midRadius, y: circlePoint.y-midRadius)
-    let size = CGSize(width: hourRadius, height: hourRadius)
-    textLayer.frame = CGRect(origin: origin, size: size)
-    
-    shapeLayer.addSublayer(textLayer)
-    
-    return shapeLayer
-  }
-  
-  private func positionCircle(at angle: Double) -> CGPoint {
-    return CGPoint(
-      x: (clockRadius-hourRadius) * CGFloat(sin(angle)) + clockRadius,
-      y: (clockRadius-hourRadius) * CGFloat(cos(angle)) + clockRadius
-    )
-  }
-  
-  // MARK: - Handle Time Selection
-  
-  private func drawHandle(at point: CGPoint) {
-    let path = UIBezierPath()
-    path.move(to: CGPoint(x: clockRadius, y: clockRadius))
-    path.addLine(to: point)
-    
-    handleLayer.path = path.cgPath
-    handleLayer.name = "handleLayer"
-    handleLayer.strokeColor = selectedHourCircleColor
-    handleLayer.lineWidth = 3.0
-    
-    viewContainer.layer.addSublayer(handleLayer)
-  }
-
-  private func pointToCircle(at angle: Double) -> CGPoint {
-    return CGPoint(
-      x: (clockRadius-2*hourRadius) * CGFloat(sin(angle)) + clockRadius,
-      y: (clockRadius-2*hourRadius) * CGFloat(cos(angle)) + clockRadius
-    )
   }
 }

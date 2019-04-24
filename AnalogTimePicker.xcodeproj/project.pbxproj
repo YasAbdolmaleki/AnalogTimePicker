@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F62107322700F60003F13AF /* UIColor+Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F62107222700F60003F13AF /* UIColor+Clock.swift */; };
 		0FA387F1226E3736003B71EC /* AnalogTimePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FA387E7226E3736003B71EC /* AnalogTimePicker.framework */; };
 		0FA387F6226E3736003B71EC /* AnalogTimePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA387F5226E3736003B71EC /* AnalogTimePickerTests.swift */; };
 		0FA387F8226E3736003B71EC /* AnalogTimePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FA387EA226E3736003B71EC /* AnalogTimePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		0D733F7011E8C1CDE4F426DC /* Pods-AnalogTimePickerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnalogTimePickerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnalogTimePickerTests/Pods-AnalogTimePickerTests.release.xcconfig"; sourceTree = "<group>"; };
+		0F62107222700F60003F13AF /* UIColor+Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Clock.swift"; sourceTree = "<group>"; };
 		0FA387E7226E3736003B71EC /* AnalogTimePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnalogTimePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA387EA226E3736003B71EC /* AnalogTimePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnalogTimePicker.h; sourceTree = "<group>"; };
 		0FA387EB226E3736003B71EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				0FA38803226E3ADF003B71EC /* AnalogTimePicking.swift */,
 				0FA38805226E4693003B71EC /* HourModel.swift */,
 				0FA387EB226E3736003B71EC /* Info.plist */,
+				0F62107222700F60003F13AF /* UIColor+Clock.swift */,
 			);
 			path = AnalogTimePicker;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			files = (
 				0FA38806226E4693003B71EC /* HourModel.swift in Sources */,
 				0FA38804226E3ADF003B71EC /* AnalogTimePicking.swift in Sources */,
+				0F62107322700F60003F13AF /* UIColor+Clock.swift in Sources */,
 				0FA38802226E3797003B71EC /* AnalogTimePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

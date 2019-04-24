@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.name         = "AnalogTimePicker"
-  s.version      = "0.0.15"
+  s.version      = "0.1.0"
   s.summary      = "AnalogTimePicker is inspired by Android Time Picker."
   s.description  = <<-DESC
                   AnalogTimePicker is a completely customizable clock that can be used in any iOS app as long as a view container is provided.
@@ -46,7 +46,7 @@ Pod::Spec.new do |s|
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.source       = { :git => "https://github.com/YasAbdolmaleki/AnalogTimePicker.git", :tag => "0.0.15" }
+  s.source       = { :git => "https://github.com/YasAbdolmaleki/AnalogTimePicker.git", :tag => "0.1.0" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   
